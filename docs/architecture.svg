@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <defs>
+    <style>
+      @keyframes flowParticle {
+        0% { offset-distance: 0%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { offset-distance: 100%; opacity: 0; }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { filter: drop-shadow(0 0 4px #f0883e); }
+        50% { filter: drop-shadow(0 0 12px #f0883e) drop-shadow(0 0 20px #f0883e55); }
+      }
+      @keyframes clockRotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes dashFlow {
+        0% { stroke-dashoffset: 16; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes nodeAppear {
+        0% { opacity: 0; transform: translateY(8px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes subtlePulse {
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 1; }
+      }
+      .flow-particle {
+        animation: flowParticle 3s linear infinite;
+      }
+      .flow-particle-2 {
+        animation: flowParticle 3s linear infinite;
+        animation-delay: 1s;
+      }
+      .flow-particle-3 {
+        animation: flowParticle 3s linear infinite;
+        animation-delay: 2s;
+      }
+      .puppeteer-group {
+        animation: pulseGlow 2.5s ease-in-out infinite;
+      }
+      .clock-hand {
+        transform-origin: 390px 120px;
+        animation: clockRotate 4s linear infinite;
+      }
+      .feedback-line {
+        stroke-dasharray: 6 4;
+        animation: dashFlow 0.8s linear infinite;
+      }
+      .node-1 { animation: nodeAppear 0.5s ease-out both; animation-delay: 0.1s; }
+      .node-2 { animation: nodeAppear 0.5s ease-out both; animation-delay: 0.25s; }
+      .node-3 { animation: nodeAppear 0.5s ease-out both; animation-delay: 0.4s; }
+      .node-4 { animation: nodeAppear 0.5s ease-out both; animation-delay: 0.55s; }
+      .node-5 { animation: nodeAppear 0.5s ease-out both; animation-delay: 0.7s; }
+      .node-6 { animation: nodeAppear 0.5s ease-out both; animation-delay: 0.85s; }
+      .label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #e6edf3;
+        font-size: 11px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .sublabel {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #8b949e;
+        font-size: 8.5px;
+        text-anchor: middle;
+      }
+      .title-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #e6edf3;
+        font-size: 14px;
+        font-weight: 700;
+        text-anchor: middle;
+      }
+    </style>
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8b949e"/>
+    </marker>
+    <marker id="arrowFeedback" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#58a6ff"/>
+    </marker>
+    <!-- Flow path for particles -->
+    <path id="mainFlow" d="M 105 120 L 690 120" fill="none"/>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="300" rx="8" fill="#0d1117"/>
+  <rect x="1" y="1" width="798" height="298" rx="7" fill="none" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="32" class="title-text">How CaptureCadence Works</text>
+
+  <!-- Connection lines -->
+  <line x1="128" y1="120" x2="192" y2="120" stroke="#21262d" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="258" y1="120" x2="322" y2="120" stroke="#21262d" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="388" y1="120" x2="452" y2="120" stroke="#21262d" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="518" y1="120" x2="582" y2="120" stroke="#21262d" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="648" y1="120" x2="678" y2="120" stroke="#21262d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Flow particles on main pipeline -->
+  <circle r="3" fill="#58a6ff" class="flow-particle">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 105 0 L 595 0"/>
+  </circle>
+  <circle r="3" fill="#58a6ff" class="flow-particle-2">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 105 0 L 595 0" begin="1s"/>
+  </circle>
+  <circle r="3" fill="#58a6ff" class="flow-particle-3">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 105 0 L 595 0" begin="2s"/>
+  </circle>
+
+  <!-- Node 1: Web UI -->
+  <g class="node-1">
+    <rect x="62" y="85" width="66" height="70" rx="10" fill="#161b22" stroke="#bc8cff" stroke-width="1.5"/>
+    <!-- Browser icon -->
+    <rect x="79" y="96" width="32" height="24" rx="3" fill="none" stroke="#bc8cff" stroke-width="1.2"/>
+    <line x1="79" y1="103" x2="111" y2="103" stroke="#bc8cff" stroke-width="1"/>
+    <circle cx="84" cy="99.5" r="1.5" fill="#bc8cff"/>
+    <circle cx="89" cy="99.5" r="1.5" fill="#bc8cff"/>
+    <text x="95" y="140" class="label">Web UI</text>
+    <text x="95" y="150" class="sublabel">adds sites</text>
+  </g>
+
+  <!-- Node 2: Express Server -->
+  <g class="node-2">
+    <rect x="192" y="85" width="66" height="70" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
+    <!-- Server icon -->
+    <rect x="207" y="96" width="36" height="10" rx="2" fill="none" stroke="#58a6ff" stroke-width="1.2"/>
+    <rect x="207" y="109" width="36" height="10" rx="2" fill="none" stroke="#58a6ff" stroke-width="1.2"/>
+    <circle cx="236" cy="101" r="2" fill="#58a6ff"/>
+    <circle cx="236" cy="114" r="2" fill="#58a6ff"/>
+    <text x="225" y="140" class="label">Express</text>
+    <text x="225" y="150" class="sublabel">server.js</text>
+  </g>
+
+  <!-- Node 3: Scheduler -->
+  <g class="node-3">
+    <rect x="322" y="85" width="66" height="70" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
+    <!-- Clock face -->
+    <circle cx="355" cy="108" r="12" fill="none" stroke="#58a6ff" stroke-width="1.2"/>
+    <!-- Clock hand (animated) -->
+    <g style="transform-origin: 355px 108px;" class="clock-hand">
+      <line x1="355" y1="108" x2="355" y2="99" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <line x1="355" y1="108" x2="362" y2="112" stroke="#58a6ff" stroke-width="1" stroke-linecap="round"/>
+    <text x="355" y="140" class="label">Scheduler</text>
+    <text x="355" y="150" class="sublabel">setInterval</text>
+  </g>
+
+  <!-- Node 4: Puppeteer (with pulsing glow) -->
+  <g class="node-4 puppeteer-group">
+    <rect x="452" y="85" width="66" height="70" rx="10" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+    <!-- Chrome-like icon -->
+    <circle cx="485" cy="105" r="11" fill="none" stroke="#f0883e" stroke-width="1.5"/>
+    <circle cx="485" cy="105" r="4" fill="#f0883e" opacity="0.5"/>
+    <text x="485" y="140" class="label">Puppeteer</text>
+    <text x="485" y="150" class="sublabel">headless Chrome</text>
+  </g>
+
+  <!-- Node 5: Screenshot -->
+  <g class="node-5">
+    <rect x="582" y="85" width="66" height="70" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+    <!-- Image icon -->
+    <rect x="598" y="96" width="34" height="24" rx="2" fill="none" stroke="#3fb950" stroke-width="1.2"/>
+    <circle cx="608" cy="105" r="3" fill="#3fb950" opacity="0.6"/>
+    <polyline points="598,116 609,108 618,114 624,110 632,116" fill="none" stroke="#3fb950" stroke-width="1"/>
+    <text x="615" y="140" class="label">Screenshot</text>
+    <text x="615" y="150" class="sublabel">WebP capture</text>
+  </g>
+
+  <!-- Node 6: File System -->
+  <g class="node-6">
+    <rect x="678" y="85" width="66" height="70" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+    <!-- Folder icon -->
+    <path d="M 695 100 L 695 96 L 707 96 L 710 100 L 729 100 L 729 118 L 695 118 Z" fill="none" stroke="#3fb950" stroke-width="1.2"/>
+    <text x="711" y="140" class="label">File System</text>
+    <text x="711" y="150" class="sublabel">saves output</text>
+  </g>
+
+  <!-- Feedback loop: urls.json persistence -->
+  <path d="M 711 160 L 711 230 L 225 230 L 225 160" class="feedback-line" fill="none" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrowFeedback)" opacity="0.6"/>
+
+  <!-- urls.json label on feedback line -->
+  <rect x="420" y="218" width="76" height="22" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="1" opacity="0.9"/>
+  <text x="458" y="233" class="sublabel" fill="#58a6ff" font-size="9">urls.json</text>
+
+  <!-- Feedback label -->
+  <text x="458" y="212" class="sublabel" fill="#8b949e" font-size="8">persistence / restart</text>
+
+  <!-- Animated particle on feedback path -->
+  <circle r="2.5" fill="#58a6ff" opacity="0.8">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 711 160 L 711 230 L 225 230 L 225 160"/>
+  </circle>
+
+  <!-- Step numbers -->
+  <circle cx="95" cy="72" r="8" fill="#21262d" stroke="#8b949e" stroke-width="0.8"/>
+  <text x="95" y="75.5" class="sublabel" fill="#e6edf3" font-size="8" font-weight="700">1</text>
+  <circle cx="225" cy="72" r="8" fill="#21262d" stroke="#8b949e" stroke-width="0.8"/>
+  <text x="225" y="75.5" class="sublabel" fill="#e6edf3" font-size="8" font-weight="700">2</text>
+  <circle cx="355" cy="72" r="8" fill="#21262d" stroke="#8b949e" stroke-width="0.8"/>
+  <text x="355" y="75.5" class="sublabel" fill="#e6edf3" font-size="8" font-weight="700">3</text>
+  <circle cx="485" cy="72" r="8" fill="#21262d" stroke="#8b949e" stroke-width="0.8"/>
+  <text x="485" y="75.5" class="sublabel" fill="#e6edf3" font-size="8" font-weight="700">4</text>
+  <circle cx="615" cy="72" r="8" fill="#21262d" stroke="#8b949e" stroke-width="0.8"/>
+  <text x="615" y="75.5" class="sublabel" fill="#e6edf3" font-size="8" font-weight="700">5</text>
+  <circle cx="711" cy="72" r="8" fill="#21262d" stroke="#8b949e" stroke-width="0.8"/>
+  <text x="711" y="75.5" class="sublabel" fill="#e6edf3" font-size="8" font-weight="700">6</text>
+
+  <!-- Legend -->
+  <g transform="translate(30, 268)">
+    <rect x="0" y="0" width="8" height="8" rx="2" fill="#bc8cff" opacity="0.8"/>
+    <text x="12" y="7.5" class="sublabel" font-size="8">UI</text>
+    <rect x="40" y="0" width="8" height="8" rx="2" fill="#58a6ff" opacity="0.8"/>
+    <text x="52" y="7.5" class="sublabel" font-size="8">Server</text>
+    <rect x="95" y="0" width="8" height="8" rx="2" fill="#f0883e" opacity="0.8"/>
+    <text x="107" y="7.5" class="sublabel" font-size="8">Browser</text>
+    <rect x="155" y="0" width="8" height="8" rx="2" fill="#3fb950" opacity="0.8"/>
+    <text x="167" y="7.5" class="sublabel" font-size="8">Output</text>
+  </g>
+</svg>

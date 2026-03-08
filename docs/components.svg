@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <style>
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      @keyframes linePulse {
+        0%, 100% { stroke-opacity: 0.3; }
+        50% { stroke-opacity: 0.9; }
+      }
+      @keyframes dockerBreathe {
+        0%, 100% { stroke-opacity: 0.4; stroke-width: 1.5; }
+        50% { stroke-opacity: 0.8; stroke-width: 2.5; }
+      }
+      @keyframes nodeGlow {
+        0%, 100% { filter: drop-shadow(0 0 0px transparent); }
+        50% { filter: drop-shadow(0 0 6px #58a6ff33); }
+      }
+      @keyframes dotTravel1 {
+        0% { offset-distance: 0%; opacity: 0; }
+        5% { opacity: 1; }
+        95% { opacity: 1; }
+        100% { offset-distance: 100%; opacity: 0; }
+      }
+      .fade-1 { animation: fadeIn 0.6s ease-out both; animation-delay: 0.1s; }
+      .fade-2 { animation: fadeIn 0.6s ease-out both; animation-delay: 0.3s; }
+      .fade-3 { animation: fadeIn 0.6s ease-out both; animation-delay: 0.5s; }
+      .fade-4 { animation: fadeIn 0.6s ease-out both; animation-delay: 0.7s; }
+      .fade-5 { animation: fadeIn 0.6s ease-out both; animation-delay: 0.9s; }
+      .fade-6 { animation: fadeIn 0.6s ease-out both; animation-delay: 1.1s; }
+      .conn-line {
+        animation: linePulse 2.5s ease-in-out infinite;
+      }
+      .conn-line-2 {
+        animation: linePulse 2.5s ease-in-out infinite;
+        animation-delay: 0.6s;
+      }
+      .conn-line-3 {
+        animation: linePulse 2.5s ease-in-out infinite;
+        animation-delay: 1.2s;
+      }
+      .conn-line-4 {
+        animation: linePulse 2.5s ease-in-out infinite;
+        animation-delay: 1.8s;
+      }
+      .docker-border {
+        animation: dockerBreathe 3.5s ease-in-out infinite;
+      }
+      .hub-glow {
+        animation: nodeGlow 3s ease-in-out infinite;
+      }
+      .label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #e6edf3;
+        font-size: 12px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .sublabel {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #8b949e;
+        font-size: 9px;
+        text-anchor: middle;
+      }
+      .title-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #e6edf3;
+        font-size: 14px;
+        font-weight: 700;
+        text-anchor: middle;
+      }
+      .docker-label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #8b949e;
+        font-size: 10px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .conn-label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        fill: #484f58;
+        font-size: 7.5px;
+        text-anchor: middle;
+      }
+    </style>
+    <marker id="dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+      <circle cx="3" cy="3" r="2" fill="#58a6ff" opacity="0.6"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" rx="8" fill="#0d1117"/>
+  <rect x="1" y="1" width="798" height="398" rx="7" fill="none" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="32" class="title-text">CaptureCadence Component Overview</text>
+
+  <!-- Docker Container border -->
+  <g class="fade-6">
+    <rect x="80" y="50" width="640" height="310" rx="16" fill="none" stroke="#8b949e" stroke-width="1.5" class="docker-border" stroke-dasharray="8 4"/>
+    <!-- Docker whale icon (simplified) -->
+    <g transform="translate(370, 340)">
+      <rect x="0" y="0" width="6" height="5" rx="1" fill="#8b949e" opacity="0.5"/>
+      <rect x="7" y="0" width="6" height="5" rx="1" fill="#8b949e" opacity="0.5"/>
+      <rect x="14" y="0" width="6" height="5" rx="1" fill="#8b949e" opacity="0.5"/>
+      <rect x="0" y="6" width="6" height="5" rx="1" fill="#8b949e" opacity="0.5"/>
+      <rect x="7" y="6" width="6" height="5" rx="1" fill="#8b949e" opacity="0.5"/>
+      <rect x="14" y="6" width="6" height="5" rx="1" fill="#8b949e" opacity="0.5"/>
+      <rect x="21" y="6" width="6" height="5" rx="1" fill="#8b949e" opacity="0.5"/>
+      <path d="M -4 14 Q 2 10, 10 12 Q 18 8, 30 12 Q 36 14, 34 18 L -2 18 Q -6 16, -4 14" fill="#8b949e" opacity="0.4"/>
+    </g>
+    <text x="400" y="370" class="docker-label">Docker Container</text>
+  </g>
+
+  <!-- Connection lines (drawn before nodes so nodes sit on top) -->
+
+  <!-- Web UI to Express -->
+  <g class="fade-3">
+    <line x1="260" y1="140" x2="340" y2="190" stroke="#bc8cff" stroke-width="1.5" class="conn-line"/>
+    <text x="290" y="158" class="conn-label" transform="rotate(27, 290, 158)">serves HTML</text>
+    <circle r="3" fill="#bc8cff" opacity="0.8">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M 260 140 L 340 190" begin="0s"/>
+    </circle>
+  </g>
+
+  <!-- Puppeteer to Express -->
+  <g class="fade-3">
+    <line x1="540" y1="140" x2="460" y2="190" stroke="#f0883e" stroke-width="1.5" class="conn-line-2"/>
+    <text x="510" y="158" class="conn-label" transform="rotate(-27, 510, 158)">automation</text>
+    <circle r="3" fill="#f0883e" opacity="0.8">
+      <animateMotion dur="2.8s" repeatCount="indefinite" path="M 460 190 L 540 140" begin="0.5s"/>
+    </circle>
+  </g>
+
+  <!-- urls.json to Express -->
+  <g class="fade-4">
+    <line x1="220" y1="230" x2="330" y2="215" stroke="#58a6ff" stroke-width="1.5" class="conn-line-3"/>
+    <text x="270" y="228" class="conn-label">read/write</text>
+    <circle r="3" fill="#58a6ff" opacity="0.8">
+      <animateMotion dur="2.2s" repeatCount="indefinite" path="M 220 230 L 330 215"/>
+    </circle>
+  </g>
+
+  <!-- Express to Screenshot Output -->
+  <g class="fade-4">
+    <line x1="470" y1="215" x2="575" y2="230" stroke="#3fb950" stroke-width="1.5" class="conn-line-4"/>
+    <text x="528" y="228" class="conn-label">WebP output</text>
+    <circle r="3" fill="#3fb950" opacity="0.8">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 470 215 L 575 230" begin="0.3s"/>
+    </circle>
+  </g>
+
+  <!-- HUB: Express Server (center) -->
+  <g class="fade-1 hub-glow">
+    <rect x="330" y="180" width="140" height="70" rx="12" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <!-- Server icon -->
+    <rect x="372" y="192" width="56" height="12" rx="3" fill="none" stroke="#58a6ff" stroke-width="1.2"/>
+    <rect x="372" y="208" width="56" height="12" rx="3" fill="none" stroke="#58a6ff" stroke-width="1.2"/>
+    <circle cx="418" cy="198" r="2.5" fill="#58a6ff"/>
+    <circle cx="418" cy="214" r="2.5" fill="#58a6ff"/>
+    <circle cx="410" cy="198" r="1.5" fill="#58a6ff" opacity="0.5"/>
+    <circle cx="410" cy="214" r="1.5" fill="#58a6ff" opacity="0.5"/>
+    <text x="400" y="237" class="label">Express Server</text>
+    <text x="400" y="247" class="sublabel">server.js :3033</text>
+  </g>
+
+  <!-- Web UI (top-left) -->
+  <g class="fade-2">
+    <rect x="150" y="85" width="120" height="65" rx="10" fill="#161b22" stroke="#bc8cff" stroke-width="1.5"/>
+    <!-- Browser window icon -->
+    <rect x="177" y="95" width="66" height="32" rx="4" fill="none" stroke="#bc8cff" stroke-width="1.2"/>
+    <line x1="177" y1="103" x2="243" y2="103" stroke="#bc8cff" stroke-width="0.8"/>
+    <circle cx="183" cy="99" r="1.8" fill="#bc8cff" opacity="0.6"/>
+    <circle cx="189" cy="99" r="1.8" fill="#bc8cff" opacity="0.6"/>
+    <circle cx="195" cy="99" r="1.8" fill="#bc8cff" opacity="0.6"/>
+    <rect x="185" y="107" width="30" height="3" rx="1" fill="#bc8cff" opacity="0.3"/>
+    <rect x="185" y="113" width="45" height="3" rx="1" fill="#bc8cff" opacity="0.2"/>
+    <text x="210" y="140" class="label" fill="#bc8cff">Web UI</text>
+    <text x="210" y="150" class="sublabel">index.html</text>
+  </g>
+
+  <!-- Puppeteer Engine (top-right) -->
+  <g class="fade-2">
+    <rect x="530" y="85" width="120" height="65" rx="10" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+    <!-- Chrome icon -->
+    <circle cx="590" cy="108" r="16" fill="none" stroke="#f0883e" stroke-width="1.5"/>
+    <circle cx="590" cy="108" r="6" fill="#f0883e" opacity="0.3"/>
+    <circle cx="590" cy="108" r="3" fill="#f0883e" opacity="0.6"/>
+    <!-- Chrome segments -->
+    <line x1="590" y1="92" x2="590" y2="102" stroke="#f0883e" stroke-width="1" opacity="0.6"/>
+    <line x1="576" y1="116" x2="584" y2="111" stroke="#f0883e" stroke-width="1" opacity="0.6"/>
+    <line x1="604" y1="116" x2="596" y2="111" stroke="#f0883e" stroke-width="1" opacity="0.6"/>
+    <text x="590" y="140" class="label" fill="#f0883e">Puppeteer</text>
+    <text x="590" y="150" class="sublabel">headless Chrome</text>
+  </g>
+
+  <!-- urls.json (left) -->
+  <g class="fade-5">
+    <rect x="110" y="200" width="110" height="60" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
+    <!-- JSON file icon -->
+    <rect x="146" y="208" width="28" height="34" rx="2" fill="none" stroke="#58a6ff" stroke-width="1.2"/>
+    <polyline points="164,208 164,216 174,216" fill="none" stroke="#58a6ff" stroke-width="1"/>
+    <text x="154" y="225" fill="#58a6ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="6" text-anchor="middle" font-weight="700">{  }</text>
+    <text x="165" y="250" class="label" fill="#58a6ff">urls.json</text>
+    <text x="165" y="260" class="sublabel">site config</text>
+  </g>
+
+  <!-- Screenshot Output (right) -->
+  <g class="fade-5">
+    <rect x="575" y="200" width="120" height="60" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+    <!-- Image stack icon -->
+    <rect x="610" y="213" width="32" height="22" rx="2" fill="none" stroke="#3fb950" stroke-width="1.2"/>
+    <rect x="614" y="209" width="32" height="22" rx="2" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+    <circle cx="622" cy="216" r="3" fill="#3fb950" opacity="0.4"/>
+    <polyline points="614,227 623,221 630,225 636,220 646,227" fill="none" stroke="#3fb950" stroke-width="0.8"/>
+    <text x="635" y="250" class="label" fill="#3fb950">Screenshots</text>
+    <text x="635" y="260" class="sublabel">WebP output</text>
+  </g>
+
+  <!-- Legend bottom-left -->
+  <g transform="translate(30, 385)" class="fade-6">
+    <circle cx="4" cy="-2" r="3" fill="#bc8cff" opacity="0.7"/>
+    <text x="12" y="1" class="sublabel" font-size="8">UI</text>
+    <circle cx="44" cy="-2" r="3" fill="#58a6ff" opacity="0.7"/>
+    <text x="52" y="1" class="sublabel" font-size="8">Server / Config</text>
+    <circle cx="120" cy="-2" r="3" fill="#f0883e" opacity="0.7"/>
+    <text x="128" y="1" class="sublabel" font-size="8">Browser Engine</text>
+    <circle cx="208" cy="-2" r="3" fill="#3fb950" opacity="0.7"/>
+    <text x="216" y="1" class="sublabel" font-size="8">Output</text>
+  </g>
+</svg>

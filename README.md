@@ -1,145 +1,108 @@
-![Alt text](https://github.com/ry-ops/CaptureCadence/blob/main/CaptureCadence.jpg)
+<img src="https://github.com/ry-ops/capture-cadence/blob/main/CaptureCadence.png" width="100%">
 
-**CaptureCadence** is a lightweight web app and Dockerized service that takes full-page screenshots of websites on a schedule. It uses [Puppeteer](https://pptr.dev/) for browser automation and provides a simple web interface to add, customize, and manage screenshot jobs.
+# CaptureCadence
 
-## 🚀 Features
+**Scheduled full-page website screenshot automation.**
 
-- 📸 Full-page screenshots of any URL
-- 🕓 Customizable screenshot interval per site (in minutes)
-- 🗂️ Choose the destination folder for each image
-- 📝 Set a custom base name for saved files
-- 🔁 Overwrite images automatically with consistent filenames (e.g. `duluth.webp`)
-- 💾 Images saved in `.webp` format for efficient storage
-- 🧰 Docker-ready for easy deployment
+[![Status](https://img.shields.io/badge/Status-Archived-lightgrey)](https://github.com/ry-ops/capture-cadence)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://docker.com)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](./LICENSE)
 
-## 📦 Requirements
+> **Note:** This project is archived and no longer in active development or production use. The codebase is preserved as-is for reference.
 
-- [Docker](https://www.docker.com/) (for containerized setup)
-- Or: Node.js (v18+) and npm for local development
+---
 
-## 🛠️ Local Development
+## What is CaptureCadence?
 
-Clone this repository and install dependencies:
+CaptureCadence is a lightweight tool that takes full-page screenshots of websites on a configurable schedule. Add any URL, set an interval in minutes, and it automatically captures the page using Puppeteer's headless Chrome, saving the result as an efficient WebP image.
 
-```bash
-git clone https://github.com/ry-ops/capturecadence.git
-cd shotclock
-npm install
-npm start
-````
+It was built for monitoring website changes, creating visual dashboards, and archiving periodic snapshots of web content.
 
-Then open your browser to:
-`http://localhost:3000`
+---
 
-## 🐳 Docker Usage
+## How It Works
 
-To build and run the app in a container:
+<p align="center">
+  <img src="./docs/architecture.svg" alt="CaptureCadence Architecture" width="100%">
+</p>
 
-```bash
-docker build -t shotclock .
-docker run -p 3000:3000 -v $(pwd)/screenshots:/app/screenshots shotclock
+1. User adds a site via the web UI (URL, interval, save path, filename)
+2. Express server stores the config in `urls.json` and schedules a `setInterval`
+3. When the interval fires, Puppeteer launches headless Chrome
+4. Navigates to the URL, waits for `networkidle0` (all requests complete)
+5. Takes a full-page screenshot in WebP format
+6. Saves to the configured directory — on restart, all jobs reload automatically
+
+---
+
+## Components
+
+<p align="center">
+  <img src="./docs/components.svg" alt="CaptureCadence Components" width="100%">
+</p>
+
+| Component | Description |
+|-----------|-------------|
+| **Express Server** | HTTP server on port 3000, serves UI, handles API requests, manages scheduler |
+| **Puppeteer Engine** | Headless Chrome automation — full-page capture with network idle detection |
+| **Web UI** | Minimal form-based interface for adding screenshot jobs |
+| **urls.json** | File-based persistence — jobs survive server restarts |
+| **Docker** | Containerized deployment with volume mount for screenshot output |
+
+---
+
+## Features
+
+- Full-page screenshots of any URL using headless Chrome
+- Per-site configurable intervals (in minutes)
+- Custom save paths and filenames
+- WebP format for efficient storage
+- Persistent job configuration (survives restarts)
+- Docker-ready with volume mount support
+- Overwrite mode (fixed filename) or accumulate mode (timestamped)
+
+---
+
+## Project Structure
+
 ```
-
-Access the web UI at:
-`http://localhost:3000`
-
-## 📁 Project Structure
-
-```
-.
-├── Dockerfile
-├── puppeteer.js       # Screenshot logic
-├── server.js          # Express server & scheduler
-├── urls.json          # Saved job config
+capture-cadence/
+├── server.js          # Express server, scheduler, API endpoints
+├── puppeteer.js       # Headless Chrome screenshot capture logic
+├── urls.json          # Persistent job configuration
 ├── ui/
 │   └── index.html     # Web interface
-└── screenshots/       # Output directory for .webp files
-```
-
-## ✏️ Usage
-
-1. Open the web interface.
-2. Enter:
-
-   * The website URL
-   * Interval in minutes
-   * Optional: folder name (relative to project root, e.g. `Photos`)
-   * Optional: base filename (e.g. `duluth.webp`)
-3. Click **Add Website**.
-4. Screenshots will be automatically taken and saved on schedule.
-
----
-
-## 🌍 Deployment
-
-### 🚀 Deploy to Fly.io
-
-1. **Install Fly CLI**:
-
-   ```bash
-   curl -L https://fly.io/install.sh | sh
-   ```
-
-2. **Login**:
-
-   ```bash
-   fly auth login
-   ```
-
-3. **Create App**:
-
-   ```bash
-   fly launch
-   ```
-
-4. **Deploy**:
-
-   ```bash
-   fly deploy
-   ```
-
-5. Visit your app at `https://your-app.fly.dev`.
-
-💾 **Optional: Add persistent storage**:
-
-```bash
-fly volumes create shotclock_data --size 1 --region <your-region>
-```
-
-Update `fly.toml`:
-
-```toml
-[mounts]
-  source = "shotclock_data"
-  destination = "/app/screenshots"
+├── Dockerfile         # Docker build (Node.js 20)
+├── package.json       # Dependencies (express, puppeteer, body-parser)
+└── docs/              # Architecture diagrams
 ```
 
 ---
 
-### 🧪 Deploy to Render.com
+## Tech Stack
 
-1. Push this project to GitHub.
-2. Log into [Render](https://render.com).
-3. Click **New Web Service**.
-4. Connect your repo and choose:
-
-   * **Environment**: Docker
-   * **Start Command**: `npm start`
-   * **Port**: `3000`
-5. Render will build and deploy automatically.
-
----
-
-## 📄 License
-
-MIT License
+| Category | Technology |
+|----------|-----------|
+| **Runtime** | Node.js 18+ |
+| **Server** | Express.js |
+| **Browser** | Puppeteer (headless Chrome) |
+| **Image Format** | WebP |
+| **Persistence** | File-based (urls.json) |
+| **Deployment** | Docker (Node.js 20 base) |
 
 ---
 
-Made with ❤️ using Puppeteer + Node.js
+## API
 
-```
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Serves the web UI |
+| `/add-site` | POST | Add a screenshot job (`{url, interval, savePath, baseName}`) |
+| `/screenshots/*` | GET | Serves captured screenshot files |
 
 ---
 
-```
+## License
+
+[MIT](./LICENSE)
