@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320" role="img" aria-labelledby="t d">
+  <title id="t">How CaptureCadence works</title>
+  <desc id="d">Add a site in the web UI; Express stores it in urls.json and schedules a setInterval; when it fires, Puppeteer launches headless Chrome, waits for networkidle0, takes a full-page screenshot and saves a WebP. On restart, all jobs reload from urls.json.</desc>
+  <style>
+    text { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; fill:#e6ebf5; }
+    .muted { fill:#8b96ad; } .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    @keyframes p0 { 0%,6.67% { transform:translateX(135px); opacity:0 } 7.78% {opacity:1} 20.00% { transform:translateX(355px); opacity:1 } 21.67%,100% { transform:translateX(355px); opacity:0 } } .p0 { animation:p0 9.0s infinite; }
+    @keyframes p1 { 0%,24.44% { transform:translateX(355px); opacity:0 } 25.56% {opacity:1} 37.78% { transform:translateX(575px); opacity:1 } 39.44%,100% { transform:translateX(575px); opacity:0 } } .p1 { animation:p1 9.0s infinite; }
+    @keyframes p2 { 0%,42.22% { transform:translateX(575px); opacity:0 } 43.33% {opacity:1} 55.56% { transform:translateX(795px); opacity:1 } 57.22%,100% { transform:translateX(795px); opacity:0 } } .p2 { animation:p2 9.0s infinite; }
+    @keyframes s0 { 0%,6.67% { stroke-opacity:.35 } 8.89%,23.33% { stroke-opacity:1 } 26.67%,100% { stroke-opacity:.35 } } .s0 { animation:s0 9.0s infinite; }
+    @keyframes s1 { 0%,24.44% { stroke-opacity:.35 } 26.67%,41.11% { stroke-opacity:1 } 44.44%,100% { stroke-opacity:.35 } } .s1 { animation:s1 9.0s infinite; }
+    @keyframes s2 { 0%,42.22% { stroke-opacity:.35 } 44.44%,58.89% { stroke-opacity:1 } 62.22%,100% { stroke-opacity:.35 } } .s2 { animation:s2 9.0s infinite; }
+    @keyframes s3 { 0%,60.00% { stroke-opacity:.35 } 62.22%,76.67% { stroke-opacity:1 } 80.00%,100% { stroke-opacity:.35 } } .s3 { animation:s3 9.0s infinite; }
+    @media (prefers-reduced-motion: reduce) { * { animation:none !important; } }
+  </style>
+  <rect width="960" height="320" rx="20" fill="#0f1420"/>
+  <text x="40" y="54" font-size="26" font-weight="800">How it works</text>
+  <text x="40" y="80" font-size="14" class="muted">Add a site, and it captures on schedule — and reloads every job on restart.</text>
+  <g class="s0"><rect x="45" y="170" width="180" height="80" rx="12" fill="#161d2b" stroke="#3ec7ff" stroke-width="2"/></g><text x="135" y="204" text-anchor="middle" font-size="15" font-weight="700">Web UI</text><text x="135" y="226" text-anchor="middle" font-size="10.5" class="muted">add URL, interval, path</text><line x1="225" y1="210" x2="265" y2="210" stroke="#2c3750" stroke-width="2" stroke-dasharray="3 5"/><g class="s1"><rect x="265" y="170" width="180" height="80" rx="12" fill="#161d2b" stroke="#b58cff" stroke-width="2"/></g><text x="355" y="204" text-anchor="middle" font-size="15" font-weight="700">Express</text><text x="355" y="226" text-anchor="middle" font-size="10.5" class="muted">stores urls.json</text><line x1="445" y1="210" x2="485" y2="210" stroke="#2c3750" stroke-width="2" stroke-dasharray="3 5"/><g class="s2"><rect x="485" y="170" width="180" height="80" rx="12" fill="#161d2b" stroke="#ffb02e" stroke-width="2"/></g><text x="575" y="204" text-anchor="middle" font-size="15" font-weight="700">Scheduler</text><text x="575" y="226" text-anchor="middle" font-size="10.5" class="muted">setInterval per site</text><line x1="665" y1="210" x2="705" y2="210" stroke="#2c3750" stroke-width="2" stroke-dasharray="3 5"/><g class="s3"><rect x="705" y="170" width="180" height="80" rx="12" fill="#161d2b" stroke="#3ddc84" stroke-width="2"/></g><text x="795" y="204" text-anchor="middle" font-size="15" font-weight="700">Puppeteer</text><text x="795" y="226" text-anchor="middle" font-size="10.5" class="muted">headless Chrome → WebP</text>
+  <g class="p0"><circle cy="210" r="6" fill="#3ec7ff"/></g><g class="p1"><circle cy="210" r="6" fill="#b58cff"/></g><g class="p2"><circle cy="210" r="6" fill="#ffb02e"/></g>
+  <text x="40" y="294" font-size="12" class="muted">Config persists in <tspan class="mono">urls.json</tspan>; on restart every job reloads automatically. Ships with a <tspan class="mono">Dockerfile</tspan>.</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img" aria-labelledby="t d">
+  <title id="t">CaptureCadence: scheduled full-page screenshots</title>
+  <desc id="d">On a configurable interval, CaptureCadence launches headless Chrome via Puppeteer, takes a full-page screenshot of a website, and saves it as a WebP image. The project is archived.</desc>
+  <defs><linearGradient id="title" x1="0" x2="1"><stop offset="0" stop-color="#2496ed"/><stop offset=".5" stop-color="#3ec7ff"/><stop offset="1" stop-color="#3ddc84"/></linearGradient></defs>
+  <style>
+    text { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; fill:#e6ebf5; }
+    .muted { fill:#8b96ad; } .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    @keyframes sweep { from { transform:rotate(0deg) } to { transform:rotate(360deg) } } .sweep { animation: sweep 6.0s linear infinite; transform-box:fill-box; transform-origin:center; }
+    @keyframes cap0 { 0%,1.67% { opacity:0; transform:scale(.6) } 5.00% { opacity:1; transform:scale(1.05) } 10.00%,98.33% { opacity:1; transform:scale(1) } 100% { opacity:1 } } .cap0 { animation: cap0 6.0s infinite; transform-box:fill-box; transform-origin:center; }
+    @keyframes fl0 { 0%,1.67% { opacity:0 } 2.50% { opacity:.7 } 5.83%,100% { opacity:0 } } .fl0 { animation: fl0 6.0s infinite; }
+    @keyframes cap1 { 0%,35.00% { opacity:0; transform:scale(.6) } 38.33% { opacity:1; transform:scale(1.05) } 43.33%,98.33% { opacity:1; transform:scale(1) } 100% { opacity:1 } } .cap1 { animation: cap1 6.0s infinite; transform-box:fill-box; transform-origin:center; }
+    @keyframes fl1 { 0%,35.00% { opacity:0 } 35.83% { opacity:.7 } 39.17%,100% { opacity:0 } } .fl1 { animation: fl1 6.0s infinite; }
+    @keyframes cap2 { 0%,68.33% { opacity:0; transform:scale(.6) } 71.67% { opacity:1; transform:scale(1.05) } 76.67%,98.33% { opacity:1; transform:scale(1) } 100% { opacity:1 } } .cap2 { animation: cap2 6.0s infinite; transform-box:fill-box; transform-origin:center; }
+    @keyframes fl2 { 0%,68.33% { opacity:0 } 69.17% { opacity:.7 } 72.50%,100% { opacity:0 } } .fl2 { animation: fl2 6.0s infinite; }
+    @media (prefers-reduced-motion: reduce) { .sweep { animation:none } .fl0,.fl1,.fl2 { opacity:0 } }
+  </style>
+  <rect width="960" height="360" rx="20" fill="#0f1420"/>
+  <text x="40" y="58" font-size="36" font-weight="800" style="fill:url(#title)">CaptureCadence</text>
+  <text x="42" y="88" font-size="16" class="muted">Full-page website screenshots, on a schedule you set.</text>
+  <g transform="translate(748 44) rotate(-4)"><rect width="150" height="30" rx="6" fill="none" stroke="#8b96ad" stroke-width="2" stroke-dasharray="5 3"/><text x="75" y="20" text-anchor="middle" font-size="12" font-weight="800" letter-spacing=".1em" class="muted">ARCHIVED</text></g>
+
+  <!-- clock -->
+  <circle cx="160" cy="250" r="80" fill="#0b0f18" stroke="#2c3750" stroke-width="3"/>
+  <line x1="230.0" y1="250.0" x2="238.0" y2="250.0" stroke="#2c3750" stroke-width="2"/><line x1="220.62177826491072" y1="285.0" x2="227.54998149518622" y2="289.0" stroke="#2c3750" stroke-width="2"/><line x1="195.0" y1="310.6217782649107" x2="199.0" y2="317.5499814951862" stroke="#2c3750" stroke-width="2"/><line x1="160.0" y1="320.0" x2="160.0" y2="328.0" stroke="#2c3750" stroke-width="2"/><line x1="125.00000000000001" y1="310.6217782649107" x2="121.00000000000001" y2="317.5499814951862" stroke="#2c3750" stroke-width="2"/><line x1="99.37822173508928" y1="285.0" x2="92.45001850481378" y2="289.0" stroke="#2c3750" stroke-width="2"/><line x1="90.0" y1="250.0" x2="82.0" y2="250.0" stroke="#2c3750" stroke-width="2"/><line x1="99.3782217350893" y1="215.0" x2="92.45001850481378" y2="211.0" stroke="#2c3750" stroke-width="2"/><line x1="124.99999999999997" y1="189.3782217350893" x2="120.99999999999997" y2="182.4500185048138" stroke="#2c3750" stroke-width="2"/><line x1="160.0" y1="180.0" x2="159.99999999999997" y2="172.0" stroke="#2c3750" stroke-width="2"/><line x1="195.0" y1="189.3782217350893" x2="199.0" y2="182.45001850481378" stroke="#2c3750" stroke-width="2"/><line x1="220.6217782649107" y1="214.99999999999997" x2="227.5499814951862" y2="210.99999999999997" stroke="#2c3750" stroke-width="2"/>
+  <g class="sweep"><line x1="160" y1="250" x2="160" y2="190" stroke="#3ddc84" stroke-width="3" stroke-linecap="round"/></g>
+  <circle cx="160" cy="250" r="5" fill="#3ddc84"/>
+  <text x="160" y="352" text-anchor="middle" font-size="12" class="muted">every N minutes</text>
+
+  <!-- browser capturing -->
+  <rect x="300" y="190" width="210" height="130" rx="10" fill="#0b0f18" stroke="#2c3750"/>
+  <rect x="300" y="190" width="210" height="22" rx="10" fill="#1a2233"/><circle cx="314" cy="201" r="4" fill="#ff5f57"/><circle cx="328" cy="201" r="4" fill="#febc2e"/><circle cx="342" cy="201" r="4" fill="#28c840"/>
+  <text x="405" y="250" text-anchor="middle" font-size="12" class="muted">headless Chrome</text>
+  <text x="405" y="270" text-anchor="middle" font-size="11" class="mono muted">Puppeteer · networkidle0</text>
+  <g class="fl0"><rect x="300" y="190" width="210" height="130" rx="10" fill="#fff"/></g>
+  <g class="fl1"><rect x="300" y="190" width="210" height="130" rx="10" fill="#fff"/></g>
+  <g class="fl2"><rect x="300" y="190" width="210" height="130" rx="10" fill="#fff"/></g>
+  <path d="M510 255 L 555 255" stroke="#2c3750" stroke-width="2" stroke-dasharray="3 5"/>
+
+  <text x="610" y="212" font-size="11" font-weight="700" class="muted" letter-spacing=".08em">SAVED AS WEBP</text>
+  <g class="cap0"><rect x="560" y="230" width="100" height="70" rx="8" fill="#0b0f18" stroke="#3ec7ff"/><rect x="568" y="240" width="60" height="8" rx="3" fill="#3ec7ff" opacity=".5"/><rect x="568" y="254" width="84" height="6" rx="3" fill="#2c3750"/><rect x="568" y="266" width="70" height="6" rx="3" fill="#2c3750"/><text x="610" y="292" text-anchor="middle" font-size="9" class="mono muted">.webp</text></g><g class="cap1"><rect x="680" y="230" width="100" height="70" rx="8" fill="#0b0f18" stroke="#b58cff"/><rect x="688" y="240" width="60" height="8" rx="3" fill="#b58cff" opacity=".5"/><rect x="688" y="254" width="84" height="6" rx="3" fill="#2c3750"/><rect x="688" y="266" width="70" height="6" rx="3" fill="#2c3750"/><text x="730" y="292" text-anchor="middle" font-size="9" class="mono muted">.webp</text></g><g class="cap2"><rect x="800" y="230" width="100" height="70" rx="8" fill="#0b0f18" stroke="#3ddc84"/><rect x="808" y="240" width="60" height="8" rx="3" fill="#3ddc84" opacity=".5"/><rect x="808" y="254" width="84" height="6" rx="3" fill="#2c3750"/><rect x="808" y="266" width="70" height="6" rx="3" fill="#2c3750"/><text x="850" y="292" text-anchor="middle" font-size="9" class="mono muted">.webp</text></g>
+</svg>
